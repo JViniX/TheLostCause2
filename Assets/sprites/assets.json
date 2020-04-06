@@ -1,0 +1,47 @@
+{
+
+"images": [
+    "Assets.png"
+],
+
+"framerate": 20,
+"frames": [
+    [1, 1, 448, 63, 0, 0, 0],
+    [1, 66, 188, 46, 0, 0, 0],
+    [451, 1, 150, 50, 0, 0, 0],
+    [191, 66, 150, 50, 0, 0, 0],
+    [343, 66, 125, 46, 0, 0, 0],
+    [603, 1, 64, 64, 0, 0, 0],
+    [470, 53, 64, 63, 0, 0, 0],
+    [536, 53, 63, 63, 0, 0, 0],
+    [669, 1, 40, 40, 0, 0, 0],
+    [601, 67, 40, 40, 0, 0, 0],
+    [643, 67, 40, 40, 0, 0, 0],
+    [685, 43, 35, 40, 0, 0, 0],
+    [685, 85, 16, 16, 0, 0, 0],
+    [711, 1, 13, 13, 0, 0, 0]
+],
+
+"animations": {
+    "platbase": { "frames": [0] },
+    "plat3": { "frames": [1] },
+    "restartButton": { "frames": [2] },
+    "startButton": { "frames": [3] },
+    "plat2": { "frames": [4] },
+    "Box": { "frames": [5] },
+    "Stone": { "frames": [6] },
+    "Acid": { "frames": [7] },
+    "haste-fire": { "frames": [8] },
+    "haste-sky": { "frames": [9] },
+    "mine": { "frames": [10] },
+    "ship3": { "frames": [11] },
+    "bulletBlue": { "frames": [12] },
+    "btnWhite": { "frames": [13] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:ecf42a85b6c3a08db5bf2b15a935f52b:3013a7ddd57bd508d96a580d66a44660:af588089c58f94edaaca79342cbcd0b2$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

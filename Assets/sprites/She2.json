@@ -1,0 +1,39 @@
+{
+
+"images": [
+    "She2.png"
+],
+
+"framerate": 20,
+"frames": [
+    [1, 1, 151, 184, 0, 0, 0],
+    [154, 1, 150, 184, 0, 0, 0],
+    [306, 1, 148, 184, 0, 0, 0],
+    [456, 1, 148, 184, 0, 0, 0],
+    [606, 1, 151, 183, 0, 0, 0],
+    [759, 1, 149, 183, 0, 0, 0],
+    [910, 1, 146, 181, 0, 0, 0],
+    [1058, 1, 151, 180, 0, 0, 0],
+    [1211, 1, 145, 177, 0, 0, 0],
+    [1358, 1, 143, 169, 0, 0, 0]
+],
+
+"animations": {
+    "tile002": { "frames": [0] },
+    "tile006": { "frames": [1] },
+    "tile004": { "frames": [2] },
+    "tile005": { "frames": [3] },
+    "tile000": { "frames": [4] },
+    "tile003": { "frames": [5] },
+    "tile007": { "frames": [6] },
+    "tile001": { "frames": [7] },
+    "tile009": { "frames": [8] },
+    "tile008": { "frames": [9] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:0350fa587b515f598910ad18cab5aa7e:d84ede0c2909dd6310b5d24e2c5389a1:749e4b6c1d315445b0e68890abe846e2$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

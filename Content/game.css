@@ -1,0 +1,17 @@
+body
+{
+    background-color: lightgray;
+}
+
+#canvas
+{
+    background-color: white;
+    border: 1px double black;
+    border-radius: 10px;
+}
+
+#mainContent
+{
+    width: 853px;
+    margin: 0 auto;
+}
