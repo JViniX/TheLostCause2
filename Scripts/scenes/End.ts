@@ -27,7 +27,7 @@ module scenes
         public Start(): void 
         {
              //instantiate a new Text object
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Arial Black", "#FFFFFF", config.Game.SCREEN_WIDTH/2, 220, true);
+            this._gameOverLabel = new objects.Label("Game Over", "60px", "Arial Black", "#FFFFFF", config.Game.SCREEN_WIDTH/2, config.Game.SCREEN_HEIGHT/2, true);
             // buttons
              this._restartButton = new objects.Button("restartButton", config.Game.SCREEN_WIDTH/2, 430, true);
             

@@ -44,12 +44,11 @@ var objects;
                 if (createjs.Ticker.getTicks() % 50 == 0) {
                     config.Game.LIVES = config.Game.LIVES - 1;
                 }
-                //this.position = new Vector2(this.position.x, config.Game.SCREEN_HEIGHT);
             }
         };
         Player.prototype._move = function () {
             if (createjs.Ticker.getTicks() % 3 == 1) {
-                if (this._isJumping && this._hightLimiteJump >= 0 && this._jumps >= 0) {
+                if (this._isJumping && this._hightLimiteJump >= 0 && this._jumps > 0) {
                     this._hightLimiteJump = this._hightLimiteJump - 1;
                     this.position = objects.Vector2.subtract(this.position, this.velocity);
                 }
@@ -64,9 +63,9 @@ var objects;
         };
         // PUBLIC METHODS
         Player.prototype.Jump = function (jump) {
-            this._onGround = false;
             this._isJumping = jump;
             if (jump) {
+                this._onGround = false;
                 this.gotoAndPlay("jump");
             }
             else {
@@ -81,6 +80,8 @@ var objects;
             // this._engineSound.loop = -1; // loop forever
             // this._engineSound.volume = 0.1; // 10% volume
             this._verticalSpeed = 12;
+            this._isJumping = false;
+            this._onGround = false;
             this.position = new objects.Vector2(this._horizontalPosition, 250);
             this.velocity = new objects.Vector2(0, this._verticalSpeed);
         };
@@ -95,19 +96,16 @@ var objects;
             this._move();
             this._checkBounds();
             // fire bullets every 10 frames
-            if (createjs.Ticker.getTicks() % 10 == 0) {
-                config.Game.SCORE = config.Game.SCORE + 1;
-                // if(config.Game.KEYBOARD_MANAGER.Fire)
-                // {
-                //     this.FireBullets();
-                // }
-            }
+            // if(createjs.Ticker.getTicks() % 10 == 0)
+            // {
+            //     config.Game.SCORE = config.Game.SCORE + 1;
+            // if(config.Game.KEYBOARD_MANAGER.Fire)
+            // {
+            //     this.FireBullets();
+            // }
+            // }
         };
         Player.prototype.Reset = function () {
-        };
-        Player.prototype.FireBullets = function () {
-            var bullet = config.Game.BULLET_MANAGER.GetBullet();
-            bullet.position = this._bulletSpawn;
         };
         return Player;
     }(objects.GameObject));

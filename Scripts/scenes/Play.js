@@ -33,9 +33,13 @@ var scenes;
             this._jumpButton.scaleY = config.Game.SCREEN_HEIGHT;
             this._background = new objects.Background();
             this._player = new objects.Player();
-            this._island = new objects.Island("plat2", true);
-            this._island2 = new objects.Island("plat2", true);
-            this._island3 = new objects.Island("plat3", true);
+            this._islands = new Array();
+            for (var i = 0; i < 2; i++) {
+                if (i % 2 == 0)
+                    this._islands.push(new objects.Island("plat2", true));
+                else
+                    this._islands.push(new objects.Island("plat3", true));
+            }
             this._scoreBoard = new managers.ScoreBoard();
             config.Game.SCORE_BOARD = this._scoreBoard;
             this._bulletManager = new managers.Bullet();
@@ -49,13 +53,10 @@ var scenes;
             this._background.Update();
             this._player.Update();
             this._bulletManager.Update();
-            if (createjs.Ticker.getTicks() % 2 == 0)
-                this._island.Update();
-            this._island2.Update();
-            this._island3.Update();
-            managers.Collision.AABBCheck(this._island, this._player);
-            managers.Collision.AABBCheck(this._island2, this._player);
-            managers.Collision.AABBCheck(this._island3, this._player);
+            for (var i = 0; i < this._islands.length; i++) {
+                this._islands[i].Update();
+                managers.Collision.AABBCheck(this._islands[i], this._player);
+            }
             if (config.Game.LIVES < 1) {
                 config.Game.SCENE = scenes.State.END;
             }
@@ -63,9 +64,10 @@ var scenes;
         Play.prototype.Main = function () {
             var _this = this;
             this.addChild(this._background);
-            this.addChild(this._island);
-            this.addChild(this._island2);
-            this.addChild(this._island3);
+            for (var _i = 0, _a = this._islands; _i < _a.length; _i++) {
+                var island = _a[_i];
+                this.addChild(island);
+            }
             this.addChild(this._player);
             this._bulletManager.AddBulletsToScene(this);
             this.addChild(this._scoreBoard.LivesLabel);

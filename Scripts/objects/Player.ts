@@ -6,7 +6,6 @@ module objects
         //private _verticalPosition:number;
         private _horizontalPosition:number;
         private _engineSound : createjs.AbstractSoundInstance;
-        private _bulletSpawn: objects.Vector2;
         private _verticalSpeed: number;
         private _isJumping: boolean;
         private _onGround: boolean;
@@ -42,7 +41,6 @@ module objects
                 {
                     config.Game.LIVES = config.Game.LIVES - 1;
                 }
-                //this.position = new Vector2(this.position.x, config.Game.SCREEN_HEIGHT);
             }
         }        
 
@@ -52,7 +50,7 @@ module objects
         {
             if(createjs.Ticker.getTicks() % 3 == 1)
             {
-                if(this._isJumping && this._hightLimiteJump >= 0 && this._jumps >= 0) 
+                if(this._isJumping && this._hightLimiteJump >= 0 && this._jumps > 0) 
                 {
                     this._hightLimiteJump = this._hightLimiteJump - 1;
                     this.position = Vector2.subtract(this.position, this.velocity);
@@ -70,10 +68,10 @@ module objects
         // PUBLIC METHODS
         public Jump(jump: boolean): void
         {
-            this._onGround = false;
             this._isJumping = jump;
             if(jump) 
             {
+                this._onGround = false;
                 this.gotoAndPlay("jump");
             }else{
                 this._hightLimiteJump = 10;
@@ -89,6 +87,8 @@ module objects
             // this._engineSound.loop = -1; // loop forever
             // this._engineSound.volume = 0.1; // 10% volume
             this._verticalSpeed = 12;
+            this._isJumping = false;
+            this._onGround = false;
             this.position = new objects.Vector2(this._horizontalPosition, 250);
             this.velocity = new Vector2(0, this._verticalSpeed);
         }
@@ -110,14 +110,14 @@ module objects
             this._checkBounds();
             
             // fire bullets every 10 frames
-            if(createjs.Ticker.getTicks() % 10 == 0)
-            {
-                config.Game.SCORE = config.Game.SCORE + 1;
+            // if(createjs.Ticker.getTicks() % 10 == 0)
+            // {
+            //     config.Game.SCORE = config.Game.SCORE + 1;
                 // if(config.Game.KEYBOARD_MANAGER.Fire)
                 // {
                 //     this.FireBullets();
                 // }
-            }
+            // }
             
         }
 
@@ -126,11 +126,11 @@ module objects
 
         }
 
-        public FireBullets(): void
-        {
-            let bullet = config.Game.BULLET_MANAGER.GetBullet();
-            bullet.position = this._bulletSpawn;
-        }
+        // public FireBullets(): void
+        // {
+        //     let bullet = config.Game.BULLET_MANAGER.GetBullet();
+        //     bullet.position = this._bulletSpawn;
+        // }
         
     }
 }

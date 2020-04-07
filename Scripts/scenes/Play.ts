@@ -6,11 +6,9 @@ module scenes
         private _jumpButton: objects.Button;
         private _background?: objects.Background;
         private _player?: objects.Player;
-        private _island?: objects.Island;
-        private _island2?: objects.Island;
-        private _island3?: objects.Island;
-
-        // private _clouds: Array<objects.Cloud>;
+        private _islands: Array<objects.Island>;
+        // private _island2?: objects.Island;
+        // private _island3?: objects.Island;
 
         private _scoreBoard: managers.ScoreBoard;
         private _bulletManager: managers.Bullet;
@@ -42,9 +40,11 @@ module scenes
             this._background = new objects.Background();
             this._player = new objects.Player();
             
-            this._island = new objects.Island("plat2", true);
-            this._island2 = new objects.Island("plat2", true);
-            this._island3 = new objects.Island("plat3", true);            
+            this._islands = new Array<objects.Island>();
+            for (let i = 0; i<2; i++){
+                if(i % 2 == 0) this._islands.push(new objects.Island("plat2", true));
+                else this._islands.push(new objects.Island("plat3", true));
+            }          
                         
             this._scoreBoard = new managers.ScoreBoard();
             config.Game.SCORE_BOARD = this._scoreBoard;
@@ -67,16 +67,11 @@ module scenes
 
             this._bulletManager.Update();
 
-            
-            if(createjs.Ticker.getTicks() % 2 == 0)
-                this._island.Update();
-            
-            this._island2.Update();
-            this._island3.Update();
-
-            managers.Collision.AABBCheck(this._island, this._player);
-            managers.Collision.AABBCheck(this._island2, this._player);
-            managers.Collision.AABBCheck(this._island3, this._player);
+            for(let i = 0; i < this._islands.length; i++)
+            {
+                this._islands[i].Update();
+                managers.Collision.AABBCheck(this._islands[i], this._player);
+            }
 
             if(config.Game.LIVES < 1)
             {
@@ -89,10 +84,10 @@ module scenes
         {
             this.addChild(this._background);
             
-            this.addChild(this._island);
-            this.addChild(this._island2);
-            this.addChild(this._island3);
-
+            for (const island of this._islands){
+                this.addChild(island);
+            }
+            
             this.addChild(this._player);
 
             this._bulletManager.AddBulletsToScene(this);
