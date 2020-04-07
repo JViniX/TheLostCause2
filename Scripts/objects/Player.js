@@ -95,15 +95,10 @@ var objects;
             }
             this._move();
             this._checkBounds();
-            // fire bullets every 10 frames
-            // if(createjs.Ticker.getTicks() % 10 == 0)
-            // {
-            //     config.Game.SCORE = config.Game.SCORE + 1;
-            // if(config.Game.KEYBOARD_MANAGER.Fire)
-            // {
-            //     this.FireBullets();
-            // }
-            // }
+            // Score by distance
+            if (createjs.Ticker.getTicks() % 10 == 0) {
+                config.Game.SCORE = config.Game.SCORE + 1;
+            }
         };
         Player.prototype.Reset = function () {
         };
